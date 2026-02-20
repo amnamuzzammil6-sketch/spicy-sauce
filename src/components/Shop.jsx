@@ -8,31 +8,32 @@ export default function Shop() {
   ];
 
   return (
-    <section id="shop" className="py-24 px-6 md:px-12 lg:px-24 bg-[#f4f4f0] border-b-8 border-black relative z-20">
+    <section id="shop" className="py-32 px-6 md:px-12 lg:px-24 bg-[#f4f4f0] border-b-[6px] border-black relative z-20">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl md:text-7xl font-black mb-16 uppercase text-center tracking-tighter">Shop the Heat</h2>
+        <h2 className="heading-font text-5xl md:text-7xl mb-20 text-center tracking-tight">SHOP THE HEAT</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           {products.map((product) => (
-            <div key={product.id} className="bg-white border-4 border-black p-6 md:p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 flex flex-col items-center group cursor-pointer">
+            <div key={product.id} className="bg-white border-[4px] md:border-[6px] border-black p-6 md:p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-3 hover:shadow-[20px_20px_0px_0px_rgba(0,0,0,1)] transition-all duration-400 flex flex-col items-center group cursor-pointer">
               
-              {/* Product Image Container */}
-              <div className="w-full h-80 bg-[#f8f8f8] border-4 border-black mb-6 flex items-center justify-center p-4 overflow-hidden relative">
-                {/* Agar in images ka background white hai, toh mix-blend-multiply use karein */}
-                <img src={product.image} alt={product.name} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"/>
+              <div className="w-full h-80 bg-[#ebebeb] border-[4px] border-black mb-8 flex items-center justify-center p-6 overflow-hidden relative">
+                {/* PRO EFFECT: Grayscale to Color on hover */}
+                <img 
+                  src={product.image} 
+                  alt={product.name} 
+                  className="w-full h-full object-contain mix-blend-multiply filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                />
               </div>
               
-              {/* Product Details */}
-              <div className="w-full flex justify-between items-end mb-6">
+              <div className="w-full flex justify-between items-end mb-8">
                 <div className="flex flex-col text-left">
-                  <h3 className="text-3xl font-black uppercase tracking-tight">{product.name}</h3>
-                  <span className="text-xl tracking-widest mt-1">{product.heat}</span>
+                  <h3 className="heading-font text-3xl tracking-tight">{product.name}</h3>
+                  <span className="text-xl tracking-widest mt-2">{product.heat}</span>
                 </div>
-                <span className="text-3xl font-black">{product.price}</span>
+                <span className="heading-font text-3xl">{product.price}</span>
               </div>
               
-              {/* Pro Add to Cart Button */}
-              <button className="w-full bg-[#ccff00] text-black px-6 py-4 font-black text-xl uppercase border-4 border-black hover:bg-black hover:text-[#ccff00] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none">
+              <button className="w-full bg-[#ccff00] text-black px-6 py-5 font-bold text-xl uppercase border-[4px] border-black hover:bg-black hover:text-[#ccff00] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-[2px] active:shadow-none">
                 Add to Cart
               </button>
             </div>

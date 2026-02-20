@@ -1,1 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;600;700&display=swap');
 @import "tailwindcss";
+
+/* Sirf headings extreme bold aur heavy hongi */
+h1, h2, h3, .heading-font {
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
+}
+
+/* Paragraphs aur buttons clean aur modern hongi */
+body, p, button, a, span {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Premium Selection Color */
+::selection {
+  background: #ccff00;
+  color: #000;
+}
+
+/* Very subtle cinematic noise (Not dirty, just textured) */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
