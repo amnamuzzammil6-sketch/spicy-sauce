@@ -9,6 +9,7 @@ import SaucyEra from './components/SaucyEra';
 import StorySection from './components/StorySection'; 
 import Shop from './components/Shop';
 import Footer from './components/Footer';
+import ExitPopup from './components/ExitPopup';
 
 import bottleImg from './assets/bottle.png';
 
@@ -33,6 +34,10 @@ export default function App() {
 
   return (
     <div className="relative bg-white overflow-x-hidden font-sans text-black selection:bg-[#ccff00] selection:text-black">
+      
+      {/* 10% OFF EXIT POPUP ADDED HERE */}
+      <ExitPopup />
+      
       <Navbar />
 
       {/* THE FALLING BOTTLE LAYER */}
