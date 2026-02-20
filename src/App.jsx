@@ -16,7 +16,6 @@ import bottleImg from './assets/bottle.png';
 export default function App() {
   const { scrollYProgress } = useScroll();
   
-  // Custom Cursor Logic
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
@@ -33,17 +32,17 @@ export default function App() {
     mass: 0.5,
   });
 
-  const bottleY = useTransform(smoothScroll, [0, 0.4, 0.7, 1], ["0vh", "120vh", "230vh", "230vh"]); 
+  // Start bottle a bit higher on mobile so it doesn't block the text
+  const bottleY = useTransform(smoothScroll, [0, 0.4, 0.7, 1], ["-10vh", "120vh", "230vh", "230vh"]); 
   const bottleRotate = useTransform(smoothScroll, [0, 0.4, 0.7, 1], [15, 180, 360, 360]);
   const bottleScale = useTransform(smoothScroll, [0, 0.6, 0.7, 1], [1, 1, 1.15, 1.15]);
 
   return (
-    <div className="relative bg-white overflow-x-hidden font-sans text-black">
+    // pb-32 is added here so the sticky button at the bottom has empty space to sit on
+    <div className="relative bg-white overflow-x-hidden font-sans text-black pb-24 md:pb-0">
       
-      {/* 1. THE NOISE OVERLAY (Magazine Texture) */}
       <div className="noise-overlay"></div>
 
-      {/* 2. CUSTOM AGENCY CURSOR (Hidden on mobile) */}
       <motion.div 
         className="hidden md:block fixed top-0 left-0 w-8 h-8 border-2 border-black bg-[#ccff00]/50 rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 backdrop-blur-sm"
         animate={{ x: mousePosition.x, y: mousePosition.y }}
@@ -53,12 +52,13 @@ export default function App() {
       <ExitPopup />
       <Navbar />
 
-      <div className="fixed top-0 left-0 w-full h-screen pointer-events-none z-50 flex justify-center pt-[15vh]">
+      {/* CHANGED Z-INDEX to 30: Bottle will now fall BEHIND the neon Tangy banner! */}
+      <div className="fixed top-0 left-0 w-full h-screen pointer-events-none z-30 flex justify-center pt-[10vh] md:pt-[15vh]">
         <motion.img 
           src={bottleImg} 
           alt="Falling Hot Sauce"
           style={{ y: bottleY, rotate: bottleRotate, scale: bottleScale }}
-          className="w-[30%] max-w-[200px] md:max-w-[280px] object-contain drop-shadow-[0_30px_30px_rgba(0,0,0,0.6)]"
+          className="w-[28%] max-w-[160px] md:max-w-[280px] object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]"
         />
       </div>
 
@@ -73,8 +73,8 @@ export default function App() {
         <Footer />
       </div>
 
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
-        <button className="group bg-[#ccff00] text-black border-[4px] border-black px-12 py-4 font-black text-xl uppercase tracking-tighter shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-[#ccff00] transition-all duration-300 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] whitespace-nowrap cursor-none">
+      <div className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+        <button className="group bg-[#ccff00] text-black border-[3px] md:border-[4px] border-black px-8 py-3 md:px-12 md:py-4 font-black text-lg md:text-xl uppercase tracking-tighter shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-[#ccff00] transition-all duration-300 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] whitespace-nowrap cursor-none">
           <span className="relative inline-block group-hover:scale-105 transition-transform duration-300">
             Explore Sauces
           </span>
